@@ -1,0 +1,19 @@
+
+#!/bin/sh
+
+# Locate the root directory of the current Git repository
+REPO_ROOT=$(git rev-parse --show-toplevel) || exit 1
+
+# Build the path to Git Guardian
+SCANNER="$REPO_ROOT/git_guardian.py"
+
+echo "-------------------------------------------"
+echo "[Git Guardian] Scanning staged files..."
+echo "-------------------------------------------"
+
+# Run the scanner using Python
+python3 "$SCANNER"
+result=$?
+
+# Return the scanner's exit code to Git
+exit "$result"
