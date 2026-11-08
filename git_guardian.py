@@ -1,4 +1,4 @@
-import subprocess 
+import subprocess
 from pathlib import PurePosixPath
 import sys
 
@@ -27,8 +27,8 @@ Blocked_Dir = {
 }
 Blocked_File = {
     '.env',
-    '.env.local'
-    '.env.production'
+    '.env.local',
+    '.env.production',
 }
 Blocked_Ext = {
     '.pyc',
@@ -56,12 +56,12 @@ def check_file(filename):
     return None
 
 
-if __name__ == "__main__":
+def scan():
     try:
         staged_files = get_staged_files()
     except subprocess.CalledProcessError as e:
         print(f"[ERROR] Failed to get staged files: {e}")
-        sys.exit(2)
+        return 2
 
     warnings = []
 
@@ -74,18 +74,21 @@ if __name__ == "__main__":
 
     if not staged_files:
         print("[PASS] No staged files found.")
-        sys.exit(0)
+        return 0
     elif warnings:
-        print('\n[WARNING] Unwanted staged files detected\n')        
+        print('\n[WARNING] Unwanted staged files detected\n')
 
         for filename, reason in warnings:
             print(f"[BLOCKED] {filename}: {reason}\n")
 
-        print('Commit rejected by Git Guardian.')
-        sys.exit(1)
+            print('Commit rejected by Git Guardian.')
+            return 1
+        return 0
 
-        
+
     else:
         print("[PASS] No blocked staged files found.")
-        sys.exit(0)
-        
+        return 0
+
+if __name__ == "__main__":
+    sys.exit(scan())
