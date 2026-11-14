@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "git-guardian-local"
-version = "0.2.0"
+version = "0.2.1"
 description = "A Python tool that helps prevent unsafe Git commits"
 readme = "README.md"
 requires-python = ">=3.9"

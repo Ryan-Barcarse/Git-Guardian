@@ -13,7 +13,7 @@ def main():
 
     parser.add_argument(
         'command',
-        choices=['scan', 'install'],
+        choices=['scan', 'install', 'version'],
         help='Scans the Git repository for unsafe files or installs the pre-commit hook'
     )
 
@@ -23,6 +23,10 @@ def main():
         return scan()
     if args.command == 'install':
         return install_hook()
+    if args.command == 'version':
+        print("Git Guardian v0.2.1")
+        return 0
+
 
     return 2
 
