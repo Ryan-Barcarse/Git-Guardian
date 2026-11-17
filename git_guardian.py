@@ -31,8 +31,12 @@ Blocked_File = {
     '.env.production',
 }
 Blocked_Ext = {
-    '.pyc',
-    '.pyo',
+    ".pyc",
+    ".pyo",
+    ".pem",
+    ".key",
+    ".p12",
+    ".pfx",
 }
 
 def check_file(filename):
