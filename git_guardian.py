@@ -26,9 +26,13 @@ Blocked_Dir = {
     '__pycache__'
 }
 Blocked_File = {
-    '.env',
-    '.env.local',
-    '.env.production',
+    ".env",
+    ".env.local",
+    ".env.production",
+    "id_rsa",
+    "id_ed25519",
+    "id_ecdsa",
+    "id_dsa",
 }
 Blocked_Ext = {
     ".pyc",
