@@ -41,6 +41,9 @@ Blocked_Ext = {
     ".key",
     ".p12",
     ".pfx",
+    ".db",
+    ".sqlite",
+    ".sqlite3",
 }
 
 def check_file(filename):
